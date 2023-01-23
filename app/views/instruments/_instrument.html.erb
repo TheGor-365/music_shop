@@ -28,13 +28,18 @@
       <strong>Title</strong>: <%= link_to instrument.title, instrument.title %>
     </p>
     <p>
-      <strong>Sold by</strong>: <%= link_to instrument.user.username, instrument.user.username %>
-    </p>
-    <p>
       <strong>Price</strong>: <%= number_to_currency(instrument.price) %>
     </p>
   </div>
-  <%= link_to image_tag(instrument.image_url(:thumb)), instrument %>
+  <p>
+    <%= link_to image_tag(instrument.image_url(:thumb)), instrument %>
+  </p>
+  <p>
+    <strong>Sold by</strong>: <%= link_to instrument.user.username, instrument.user.username %>
+  </p>
+  <p>
+    <%= button_to "Add to cart", line_item_path(instrument_id: instrument) %>
+  </p>
   <br>
     <% if instrument_author(instrument) %>
       <div class="col col-1 p-3 mt-2 border border-secondary"> 
